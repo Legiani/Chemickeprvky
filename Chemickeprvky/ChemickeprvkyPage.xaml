@@ -3,5 +3,18 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:local="clr-namespace:Chemickeprvky" 
 	x:Class="Chemickeprvky.ChemickeprvkyPage">
-	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />
+	<Label Text="Jakou značku má " VerticalOptions="Center" HorizontalOptions="Center" />
+	<Label Text="xxxx" VerticalOptions="Center" HorizontalOptions="Center" x:Name="element" />
+
+    <Button Text="A"
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand" 
+		x:Name/>
+    <Button Text="B"
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand" />
+    <Button Text="C"
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand" />
+	
 </ContentPage>

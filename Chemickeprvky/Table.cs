@@ -6,6 +6,30 @@ namespace Chemickeprvky
 	public class Table
 	{
 
+		public Element getElement()
+		{
+			List<Element> Elements = getPeriodicTable();
+			Random rnd = new Random();
+			int num = rnd.Next(1, 118);
+			return Elements[num];
+
+		}
+
+		public Element getTrueElement()
+		{
+			List<Element> Elements = getPeriodicTable();
+			Random rnd = new Random();
+			int num = rnd.Next(1, 118);
+			if (Elements[num].Activ == false)
+			{
+				getTrueElement();
+			}
+			return Elements[num];
+
+
+
+
+		}
 
 		public List<Element> getPeriodicTable()
 		{

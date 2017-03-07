@@ -7,6 +7,11 @@ namespace Chemickeprvky
 		public ChemickeprvkyPage()
 		{
 			InitializeComponent();
+			fill();
+		}
+
+		public void fill() { 
+			
 		}
 	}
 }
