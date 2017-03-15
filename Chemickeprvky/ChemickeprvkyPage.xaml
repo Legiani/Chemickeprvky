@@ -3,18 +3,76 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:local="clr-namespace:Chemickeprvky" 
 	x:Class="Chemickeprvky.ChemickeprvkyPage">
-	<Label Text="Jakou značku má " VerticalOptions="Center" HorizontalOptions="Center" />
-	<Label Text="xxxx" VerticalOptions="Center" HorizontalOptions="Center" x:Name="element" />
 
-    <Button Text="A"
-        HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand" 
-		x:Name/>
-    <Button Text="B"
-        HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand" />
-    <Button Text="C"
-        HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand" />
-	
+	<ContentPage.Content>
+	<Grid>
+		  	<Grid.RowDefinitions>
+		    	<RowDefinition Height="0.6*" />
+				<RowDefinition Height="0.2*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				
+		  	</Grid.RowDefinitions>
+		  	<Grid.ColumnDefinitions>
+		    	<ColumnDefinition Width="*" />
+		  	</Grid.ColumnDefinitions>
+
+			<Grid Grid.Row="0" Grid.Column="0" Margin="10,20,10,0">
+				  	<Grid.RowDefinitions>
+				    	<RowDefinition Height="*" />
+				  	</Grid.RowDefinitions>
+				  	<Grid.ColumnDefinitions>
+				    	<ColumnDefinition Width="*" />
+				    	<ColumnDefinition Width="*" />
+				  	</Grid.ColumnDefinitions>
+
+					<Button Grid.Row="0" Grid.Column="0"
+						Text="Opustit TEST"
+
+				        HorizontalOptions="Start"
+				        VerticalOptions="Center" 
+						Margin="10"
+						x:Name="Back" 
+						FontSize="20"/>
+					<Label Grid.Row="0" Grid.Column="1" Text="xxxx" VerticalOptions="Center"  HorizontalOptions="End" x:Name="score" FontAttributes="Bold" FontSize="20"/>	
+			</Grid>
+			
+			<Label Grid.Row="1" Grid.Column="0" Text="Jakou značku má: " VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" FontSize="20"/>
+			<Label Grid.Row="2" Grid.Column="0" Text="xxxx" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" x:Name="element" FontAttributes="Bold" FontSize="35"/>
+
+		    <Button Grid.Row="3" Grid.Column="0"
+				Text="A"
+				BackgroundColor="#d1d1e0"
+		        HorizontalOptions="FillAndExpand"
+		        VerticalOptions="FillAndExpand" 
+				BorderRadius="30"
+				Margin="10"
+				x:Name="A" 
+				FontSize="30"
+				Clicked="pressA"/>
+		    <Button Grid.Row="4" Grid.Column="0"
+				Text="B"
+		        BackgroundColor="#d1d1e0"
+		        HorizontalOptions="FillAndExpand"
+		        VerticalOptions="FillAndExpand" 
+				BorderRadius="30"
+				Margin="10,0,10,0"
+				x:Name="B" 
+				FontSize="30"
+				Clicked="pressB"/>
+		    <Button Grid.Row="5" Grid.Column="0"
+				Text="C"
+		        BackgroundColor="#d1d1e0"
+		        HorizontalOptions="FillAndExpand"
+		        VerticalOptions="FillAndExpand" 
+				BorderRadius="30"
+				Margin="10"
+				x:Name="C" 
+				FontSize="30"
+				Clicked="pressC"/>
+		</Grid>
+    </ContentPage.Content>
+
 </ContentPage>

@@ -19,7 +19,7 @@ namespace Chemickeprvky
 		{
 			List<Element> Elements = getPeriodicTable();
 			Random rnd = new Random();
-			int num = rnd.Next(0, 117);
+			int num = rnd.Next(0, 118);
 			if (Elements[num].Activ == false)
 			{
 				getTrueElement();

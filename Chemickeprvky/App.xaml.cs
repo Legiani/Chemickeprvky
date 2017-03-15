@@ -4,6 +4,7 @@ namespace Chemickeprvky
 {
 	public partial class App : Application
 	{
+		public static int right;
 		public App()
 		{
 			InitializeComponent();
@@ -27,3 +28,4 @@ namespace Chemickeprvky
 		}
 	}
 }
+
