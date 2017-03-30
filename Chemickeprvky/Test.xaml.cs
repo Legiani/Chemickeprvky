@@ -4,40 +4,50 @@ using Xamarin.Forms;
 
 namespace Chemickeprvky
 {
-	public partial class ChemickeprvkyPage : ContentPage
+	public partial class Test : ContentPage
 	{
 		Table table = new Table();
 		int right;
 		int bad;
 
-		public ChemickeprvkyPage()
+		int Iright;
+
+		public Test()
 		{
 			InitializeComponent();
+			//Task.Delay(500).Wait();
 			fill();
-
 		}
 
 		public void fill() { 
+			if (right + bad >= 25)
+			{
+				App.bad = bad;
+				App.right = right;
+				Navigation.PopModalAsync();
+			}
+
 			A.BackgroundColor = Color.FromHex("#d1d1e0");
 			B.BackgroundColor = Color.FromHex("#d1d1e0");
 			C.BackgroundColor = Color.FromHex("#d1d1e0");
-			Random rnd = new Random();
+
 
 			Element elementA = table.getTrueElement();
-			MyDelay(100);
+			Task.Delay(100);
 			Element elementB = table.getTrueElement();
 			while (elementA == elementB)
 			{
 				elementB = table.getTrueElement();
 			}
-			MyDelay(100);
+			Task.Delay(100);
 			Element elementC = table.getTrueElement();
 			while (elementC == elementB || elementC == elementA)
 			{
 				elementC = table.getTrueElement();
 			}
 
-			switch (rnd.Next(0, 4))
+
+			switch (RandomNumber(0, 6))
 			{
 				case 0:
 					A.Text = elementA.Symbol;
@@ -45,7 +55,7 @@ namespace Chemickeprvky
 					C.Text = elementC.Symbol;
 
 					element.Text = elementA.CzechName;
-					App.right = 1;
+					Iright = 1;
 					break;
 				case 1:
 					A.Text = elementA.Symbol;
@@ -53,7 +63,7 @@ namespace Chemickeprvky
 					C.Text = elementC.Symbol;
 
 					element.Text = elementB.CzechName;
-					App.right = 2;
+					Iright = 2;
 					break;
 				case 2:
 					A.Text = elementA.Symbol;
@@ -61,7 +71,7 @@ namespace Chemickeprvky
 					C.Text = elementC.Symbol;
 
 					element.Text = elementC.CzechName;
-					App.right = 3;
+					Iright = 3;
 					break;
 				case 3:
 					A.Text = elementA.Symbol;
@@ -69,15 +79,23 @@ namespace Chemickeprvky
 					C.Text = elementC.Symbol;
 
 					element.Text = elementB.CzechName;
-					App.right = 2;
-					break;					
+					Iright = 2;
+					break;	
+				case 4:
+					A.Text = elementA.Symbol;
+					B.Text = elementB.Symbol;
+					C.Text = elementC.Symbol;
+
+					element.Text = elementA.CzechName;
+					Iright = 1;
+					break;
 				default:
 					A.Text = elementA.Symbol;
 					B.Text = elementB.Symbol;
 					C.Text = elementC.Symbol;
 
 					element.Text = elementC.CzechName;
-					App.right = 3;
+					Iright = 3;
 					break;
 			}
 		}
@@ -89,7 +107,7 @@ namespace Chemickeprvky
 			B.BackgroundColor = Color.FromHex("#E51F1F");
 			C.BackgroundColor = Color.FromHex("#E51F1F");
 
-			if (App.right == 1)
+			if (Iright == 1)
 			{
 				A.BackgroundColor = Color.FromHex("#24EE64");
 				right++;
@@ -110,7 +128,7 @@ namespace Chemickeprvky
 			B.BackgroundColor = Color.FromHex("#E51F1F");
 			C.BackgroundColor = Color.FromHex("#E51F1F");
 
-			if (App.right == 2)
+			if (Iright == 2)
 			{
 				B.BackgroundColor = Color.FromHex("#24EE64");
 				right++;
@@ -131,7 +149,7 @@ namespace Chemickeprvky
 			B.BackgroundColor = Color.FromHex("#E51F1F");
 			C.BackgroundColor = Color.FromHex("#E51F1F");
 
-			if (App.right == 3)
+			if (Iright == 3)
 			{
 				C.BackgroundColor = Color.FromHex("#24EE64");
 				right++;
@@ -148,12 +166,19 @@ namespace Chemickeprvky
 		public void Delay()
 		{
 			score.Text = string.Format("{0}/{1}", right, bad);
-			MyDelay(1000);
+
 			fill();
 		}
 
-		public async void MyDelay(int time) { 
-			await Task.Delay(time);
+		//Function to get random number
+		private static readonly Random random = new Random();
+		private static readonly object syncLock = new object();
+		public static int RandomNumber(int min, int max)
+		{
+			lock (syncLock)
+			{ // synchronize
+				return random.Next(min, max);
+			}
 		}
 	}
 }

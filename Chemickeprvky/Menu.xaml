@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:Menu" 
+	x:Class="Chemickeprvky.Menu"
+	NavigationPage.HasNavigationBar="false"
+	>
+	<ContentPage.Content>
+		<StackLayout Spacing="10" x:Name="layout">
+	      	<Button Text="Výpis" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="FillAndExpand" FontSize="30" Clicked="vypis" />
+	      	<Button Text="Test" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="FillAndExpand" FontSize="30" Clicked="test" />
+			<Label Text="Statistika" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="Center" FontSize="20"/>
+			<Label x:Name="score" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="Center" FontSize="25"/>
+	    </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
