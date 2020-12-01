@@ -15,23 +15,29 @@ namespace Chemickeprvky
 		public Test()
 		{
 			InitializeComponent();
-			//Task.Delay(500).Wait();
+			//Set nav bar text to "Zpět"
+			NavigationPage.SetBackButtonTitle(this, "Zpět");
+
 			fill();
 		}
 
+		/// <summary>
+        /// Function fill view with controled elements, if user make 25 quis automaticaly pop back
+        /// </summary>
 		public void fill() { 
 			if (right + bad >= 25)
 			{
 				App.bad = bad;
 				App.right = right;
-				Navigation.PopModalAsync();
+				Navigation.PopAsync();
 			}
 
+			//Set default button background
 			A.BackgroundColor = Color.FromHex("#d1d1e0");
 			B.BackgroundColor = Color.FromHex("#d1d1e0");
 			C.BackgroundColor = Color.FromHex("#d1d1e0");
 
-
+			//Get 3 random element
 			Element elementA = table.getTrueElement();
 			Task.Delay(100);
 			Element elementB = table.getTrueElement();
@@ -46,7 +52,7 @@ namespace Chemickeprvky
 				elementC = table.getTrueElement();
 			}
 
-
+			//Randomy fill ansver buttons
 			switch (RandomNumber(0, 6))
 			{
 				case 0:
@@ -100,7 +106,11 @@ namespace Chemickeprvky
 			}
 		}
 
-		//funkce se zeptá zda je řetezec pal......
+		/// <summary>
+		/// If choice A is pressed
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		public void pressA(object sender, EventArgs e)
 		{
 			A.BackgroundColor = Color.FromHex("#E51F1F");
@@ -121,7 +131,12 @@ namespace Chemickeprvky
 
 
 		}
-		//funkce se zeptá zda je řetezec pal......
+
+		/// <summary>
+        /// If choice B is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		public void pressB(object sender, EventArgs e)
 		{
 			A.BackgroundColor = Color.FromHex("#E51F1F");
@@ -142,7 +157,12 @@ namespace Chemickeprvky
 			}
 
 		}
-		//funkce se zeptá zda je řetezec pal......
+
+		/// <summary>
+		/// If choice C is pressed
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		public void pressC(object sender, EventArgs e)
 		{
 			A.BackgroundColor = Color.FromHex("#E51F1F");
@@ -163,6 +183,8 @@ namespace Chemickeprvky
 			}
 
 		}
+
+
 		public void Delay()
 		{
 			score.Text = string.Format("{0}/{1}", right, bad);
@@ -170,7 +192,9 @@ namespace Chemickeprvky
 			fill();
 		}
 
-		//Function to get random number
+		/// <summary>
+		/// Function to get random number
+		/// </summary>
 		private static readonly Random random = new Random();
 		private static readonly object syncLock = new object();
 		public static int RandomNumber(int min, int max)

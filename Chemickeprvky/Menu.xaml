@@ -7,14 +7,27 @@
 	>
 	<ContentPage.Content>
 		<StackLayout Spacing="10" x:Name="layout">
-	      	<Button Text="Výpis" VerticalOptions="CenterAndExpand"
-	        HorizontalOptions="FillAndExpand" FontSize="30" Clicked="vypis" />
+			<Frame Padding="60,60,30,30" HasShadow="False"></Frame>
+
+			<Image Source="AppIcon.png" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="Center" Aspect="AspectFit" MinimumHeightRequest="70"/>
+			<BoxView/>
+			<Label Text="Chemické prvky" FontSize="Large" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="CenterAndExpand"/>
+
+			<Frame Padding="30,30,30,30" HasShadow="False"></Frame>
+
+	      	<Button Text="Přehled prvků" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="FillAndExpand" FontSize="20" Clicked="vypis" />
 	      	<Button Text="Test" VerticalOptions="CenterAndExpand"
-	        HorizontalOptions="FillAndExpand" FontSize="30" Clicked="test" />
+	        HorizontalOptions="FillAndExpand" FontSize="20" Clicked="test" />
+
+			<Frame Padding="30,30,30,30" HasShadow="False"></Frame>
+
 			<Label Text="Statistika" VerticalOptions="CenterAndExpand"
-	        HorizontalOptions="Center" FontSize="20"/>
-			<Label x:Name="score" VerticalOptions="CenterAndExpand"
-	        HorizontalOptions="Center" FontSize="25"/>
+	        HorizontalOptions="Center" FontSize="15"/>
+			<Label x:Name="score" Text="0/1" VerticalOptions="CenterAndExpand"
+	        HorizontalOptions="Center" FontSize="10"/>
 	    </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

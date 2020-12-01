@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Chemickeprvky
 {
+	/// <summary>
+    /// Slase to operate with periodic table
+    /// </summary>
 	public class Table
 	{
 		
@@ -18,6 +21,10 @@ namespace Chemickeprvky
 			}
 		}
 
+		/// <summary>
+        /// Return random element ignore "Active/Deactive"
+        /// </summary>
+        /// <returns>Element</returns>
 		public Element getElement()
 		{
 			List<Element> Elements = getPeriodicTable();
@@ -26,17 +33,16 @@ namespace Chemickeprvky
 
 		}
 
+		/// <summary>
+		/// Return random Active element
+		/// </summary>
+		/// <returns>Element</returns>
 		public Element getTrueElement()
 		{
 			List<Element> Elements = getPeriodicTable();
 			int num = RandomNumber(0, 118);
 
-			//vytvoření spojení s db
-			var dbConnection = App.Database;
-			//db věcí
-			Database items = App.Database;
-
-			if (App.Database.GetActiv(num) == false)
+			if (App.Database.GetIsActiv(num) == false)
 			{
 				getTrueElement();
 			}
@@ -44,6 +50,10 @@ namespace Chemickeprvky
 
 		}
 
+		/// <summary>
+        /// Return all periodic tabel
+        /// </summary>
+        /// <returns></returns>
 		public List<Element> getPeriodicTable()
 		{
 			List<Element> Elements = new List<Element>();
@@ -168,7 +178,5 @@ namespace Chemickeprvky
 
 			return Elements;
 		}
-
 	}
-
 }

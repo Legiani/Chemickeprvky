@@ -11,50 +11,71 @@ namespace Chemickeprvky
 	{
 		private SQLiteAsyncConnection database;
 
+		/// <summary>
+        /// Create DB
+        /// </summary>
+        /// <param name="dbPath"> Set in FileHelper interface to enable cross platform</param>
 		public Database(string dbPath)
 		{
 			database = new SQLiteAsyncConnection(dbPath);
 			database.CreateTableAsync<Activ>().Wait();
 		}
 
-
-        public Task<List<Activ>> GetItemsAsync()
+		/// <summary>
+		/// Return all acitvated/deactivated results
+		/// </summary>
+		/// <returns> List<Active> </returns>
+		public Task<List<Activ>> GetActives()
 		{
-			return database.Table<Activ>().ToListAsync();
+			return database.QueryAsync<Activ>("SELECT * FROM Activ");
 		}
 
-		public Task<List<Activ>> GetItemsNotDoneAsync()
+		/// <summary>
+		/// Return true if atomic number is active
+		/// </summary>
+		/// <param name="id">Atomic number of element</param>
+		/// <returns>true if is active else false</returns>
+		public bool GetIsActiv(int id)
 		{
-			return database.QueryAsync<Activ>("SELECT * FROM Activ WHERE name ='Activ' and type='table'");
-		}
-
-		public bool GetActiv(int id)
-		{
-			foreach (Activ x in database.QueryAsync<Activ>(string.Format("SELECT activ FROM Activ WHERE AtomicNumber='{0}'", id)).Result) {
-				return x.Active;
+			var item = App.Database.GetItemAsync(id: id).Result;
+			if (item == null)
+			{
+				return true;
 			}
-			return true;
-
+			return item.Active;
 		}
 
+		/// <summary>
+		/// Return Activ result by given id
+		/// </summary>
+		/// <param name="id">Atomic number of element</param>
+		/// <returns>Activ object</returns>
 		public Task<Activ> GetItemAsync(int id)
 		{
 			return database.Table<Activ>().Where(i => i.AtomicNumber == id).FirstOrDefaultAsync();
 		}
 
-
+		/// <summary>
+        /// Save or update given data 
+        /// </summary>
+        /// <param name="item">Activ object</param>
+        /// <returns>Task</returns>
 		public Task<int> SaveItemAsync(Activ item)
 		{
-			if (item.AtomicNumber != 0)
-			{
-				return database.UpdateAsync(item);
-			}
-			else
+			var exist = App.Database.GetItemAsync(id: item.AtomicNumber).Result;
+			if (exist == null)
 			{
 				return database.InsertAsync(item);
 			}
+			return database.UpdateAsync(item);
+			
 		}
 
+		/// <summary>
+		/// Delete object by id
+		/// </summary>
+		/// <param name="id">Atomic number of element</param>
+		/// <returns></returns>
 		public Task<int> DeleteItemAsync(Activ item)
 		{
 			return database.DeleteAsync(item);

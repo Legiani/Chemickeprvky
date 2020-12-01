@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="Chemickeprvky.Vypis" 
-	xmlns:local="clr-namespace:Vypis" >
+	x:Class="Chemickeprvky.Elements"
+	NavigationPage.HasNavigationBar="true">
 	<ContentPage.Content>
-		
-			<ListView x:Name="ListViewFormatted" IsGroupingEnabled="false">
-			    <ListView.ItemTemplate>
-					<DataTemplate>
-					    <ViewCell>
-							<ViewCell.ContextActions>
-					            <MenuItem Clicked="Activ" CommandParameter="{Binding AtomicNumber}"
-					               Text="Activ" />
-					            <MenuItem Clicked="DeActiv" CommandParameter="{Binding AtomicNumber}"
-					               Text="DeActiv" IsDestructive="True" />
-					        </ViewCell.ContextActions>
+		<ListView x:Name="ListViewFormatted">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell Height="90">
+						<ViewCell.ContextActions>
+					        <MenuItem Clicked="Activ" CommandParameter="{Binding AtomicNumber}"
+					            Text="Activ" />
+
+					        <MenuItem Clicked="DeActiv" CommandParameter="{Binding AtomicNumber}"
+					            Text="DeActiv" IsDestructive="True" />
+					    </ViewCell.ContextActions>
 						
-						    <Grid HeightRequest="100">
-							    <Grid.RowDefinitions>
-									<RowDefinition Height="*" />
-									<RowDefinition Height="*"/>
-							    </Grid.RowDefinitions>
-							    <Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-							    </Grid.ColumnDefinitions>
-									
-									<Label Text="Zkratka:" Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-									<Label Text="Atom. Čis" Grid.Row="0" Grid.Column="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-									<Label Text="Activ" Grid.Row="0" Grid.Column="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+						<Grid Padding="5">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
 
-									<Label Text="{Binding CzechName}" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-									<Label Text="{Binding Symbol}" FontAttributes="Bold" Grid.Row="1" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-									<Label Text="{Binding AtomicNumber}" FontAttributes="Bold" Grid.Row="1" Grid.Column="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-									<Label Text="{Binding Active}" FontAttributes="Bold" Grid.Row="1" Grid.Column="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-
-
-							
-							</Grid>					 
-					    </ViewCell>
-					</DataTemplate>
-			    </ListView.ItemTemplate>
- 			</ListView>
-			
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
 	
+							<Label Text="{Binding CzechName}" FontAttributes="None"  Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+							<Label Text="{Binding Symbol}" FontAttributes="Bold"  Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+							<Label Text="{Binding AtomicNumber}" FontAttributes="Italic"  Grid.Column="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+							<Label Text="{Binding isActiveString}" FontAttributes="Bold"  Grid.Column="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+						</Grid>					 
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+ 		</ListView>	
 	</ContentPage.Content>
 </ContentPage>
