@@ -1,5 +1,5 @@
 # Periodic table quiz
-Bazic app to task user elements witch want to learn. On home screen user shud see complet statistic.
+Basic app to task user elements witch want to learn. On home screen user shuld see complet statistic.
 
 ## Example
 ![](example.gif)
